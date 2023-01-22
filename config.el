@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "John Doe"
-      user-mail-address "john@doe.com")
+(setq user-full-name "wych(witch)"
+      user-mail-address "mail@wychwit.ch")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -21,8 +21,10 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "FantasqueSansMono NFM" :size 16 )
-      doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 15))
+(setq doom-font (font-spec :family "DejaVu Sans Mono"  :size 18 )
+)
+(setq doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 18))
+(setq doom-unicode-font (font-spec :family "DejaVu Sans Mono"))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
 ;; up, `M-x eval-region' to execute elisp code, and 'M-x doom/reload-font' to
@@ -32,7 +34,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-one)
+(setq doom-theme 'doom-fairy-floss)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -41,6 +43,7 @@
 ;; If you use `org' and don't want your org files in the default location below,
 ;; change `org-directory'. It must be set before org loads!
 (setq org-directory "~/org/")
+
 
 
 ;; Whenever you reconfigure a package, make sure to wrap your config in an
@@ -74,3 +77,35 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+(set-selection-coding-system 'utf-16-le)
+;; use org-bullets-mode for utf8 symbols as org bullets
+(require 'org-superstar)
+(add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
+(setq org-superstar-headline-bullets-list '("◉" "○" "✿" "❀" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
+)
+
+;; org ellipsis options, other than the default Go to Node...
+;; not supported in common font, but supported in Symbola (my fall-back font) ?, ?, ?
+(setq org-ellipsis "⬎")
+
+(after! org
+  (custom-set-faces!
+    '(org-document-title :height 1.3)
+    '(org-level-1 :inherit outline-1 :weight extra-bold :height 1.4)
+    '(org-level-2 :inherit outline-2 :weight bold :height 1.15)
+    '(org-level-3 :inherit outline-3 :weight bold :height 1.12)
+    '(org-level-4 :inherit outline-4 :weight bold :height 1.09)
+    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.06)
+    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.03)
+    '(org-level-7 :inherit outline-7 :weight semi-bold)
+    '(org-level-8 :inherit outline-8 :weight semi-bold)
+    ;; Ensure that anything that should be fixed-pitch in org buffers appears that
+    ;; way
+    '(org-block nil :foreground nil :inherit 'fixed-pitch)
+    '(org-code nil   :inherit '(shadow fixed-pitch))
+    '(org-table nil   :inherit '(shadow fixed-pitch))
+    '(org-verbatim nil :inherit '(shadow fixed-pitch))
+    '(org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
+    '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
+    '(org-checkbox nil :inherit 'fixed-pitch)))
