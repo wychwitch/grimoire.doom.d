@@ -82,7 +82,7 @@
 ;; use org-bullets-mode for utf8 symbols as org bullets
 (require 'org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-(setq org-superstar-headline-bullets-list '("◉" "○" "✿" "❀" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
+(setq org-superstar-headline-bullets-list '("✿" "❀" "◉" "○" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
 )
 
 ;; org ellipsis options, other than the default Go to Node...
@@ -92,12 +92,12 @@
 (after! org
   (custom-set-faces!
     '(org-document-title :height 1.3)
-    '(org-level-1 :inherit outline-1 :weight extra-bold :height 1.4)
-    '(org-level-2 :inherit outline-2 :weight bold :height 1.15)
-    '(org-level-3 :inherit outline-3 :weight bold :height 1.12)
-    '(org-level-4 :inherit outline-4 :weight bold :height 1.09)
-    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.06)
-    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.03)
+    '(org-level-1 :inherit outline-1 :weight extra-bold :height 2)
+    '(org-level-2 :inherit outline-2 :weight bold :height 1.7)
+    '(org-level-3 :inherit outline-3 :weight bold :height 1.6)
+    '(org-level-4 :inherit outline-4 :weight bold :height 1.5)
+    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.4)
+    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.3)
     '(org-level-7 :inherit outline-7 :weight semi-bold)
     '(org-level-8 :inherit outline-8 :weight semi-bold)
     ;; Ensure that anything that should be fixed-pitch in org buffers appears that
@@ -109,3 +109,32 @@
     '(org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-checkbox nil :inherit 'fixed-pitch)))
+
+
+(defun my-weebery-is-always-greater ()
+  (let* ((banner '(
+"⠀⠀⠀⣠⡶⠒⠢⠀⠀⠀⢀⣠⣴⣶⣾⣷⣶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣶⣶⣶⣤⣀⠀⠀⠀⠠⠖⢲⣦⡀⠀"
+"⠀⠀⢸⣿⣧⡀⢀⣀⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣄⣀⠀⣠⣿⡿⠀"
+"⠀⠀⢀⠙⢿⣿⣿⣿⣿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠟⠛⠛⠛⠻⢿⣿⣿⣿⣿⠿⢣⠀"
+"⠀⠀⠈⢷⣤⣀⣉⣀⣠⣤⣶⣶⣶⣶⣦⡈⢻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⠏⣠⣶⣶⣶⣶⣦⣤⣀⣈⣉⣠⣶⠇⠀"
+"⠀⠀⠀⠀⠉⠛⠛⠛⠋⠉⠉⠉⠻⣿⣿⣷⠈⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⢠⣿⣿⡿⠋⠉⠉⠉⠛⠛⠛⠋⠁⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣦⣄⠀⢸⣿⣿⡀⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⡇⢸⣿⣿⠁⢀⣠⣶⣶⣤⡀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⢸⣿⠋⠉⠻⣿⣧⠈⢿⣿⣷⠘⢿⣿⣿⣿⣿⣦⡀⠀⣠⣾⣿⣿⣿⣿⠟⢠⣿⣿⡇⢀⣾⡿⠋⠉⢻⣿⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠘⢿⣦⣤⠇⠸⣿⣆⠈⠻⣿⣷⣄⡙⠿⣿⣿⣿⣿⢸⣿⣿⣿⡿⠟⢁⣴⣿⡿⠋⢀⣾⡿⠁⢢⣤⣾⠟⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣷⣤⣈⡙⠛⠛⠒⠀⠙⣻⣿⢸⣿⡛⠁⠐⠚⠛⢛⣉⣠⣴⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⢿⣿⣿⣿⢿⣯⣾⡿⠛⠘⠻⢿⣾⣟⢿⣿⣿⣿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠟⠋⠁⠀⠀⠀⠀⠀⠉⠛⠷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⠁⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠈⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"                       EMACS OF HOPE                          "
+                   ))
+         (longest-line (apply #'max (mapcar #'length banner))))
+    (put-text-property
+     (point)
+     (dolist (line banner (point))
+       (insert (+doom-dashboard--center
+                +doom-dashboard--width
+                (concat line (make-string (max 0 (- longest-line (length line))) 32)))
+               "\n"))
+     'face 'doom-dashboard-banner)))
+
+(setq +doom-dashboard-ascii-banner-fn #'my-weebery-is-always-greater)
