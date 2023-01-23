@@ -91,7 +91,8 @@
 
 (after! org
   (custom-set-faces!
-    '(org-document-title :height 1.3)
+    '(org-document-title :height 2.3)
+    '(org-level-1 :inherit outline-0 :weight extra-bold :height 2)
     '(org-level-1 :inherit outline-1 :weight extra-bold :height 2)
     '(org-level-2 :inherit outline-2 :weight bold :height 1.7)
     '(org-level-3 :inherit outline-3 :weight bold :height 1.6)
