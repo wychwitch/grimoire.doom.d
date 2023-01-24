@@ -1,0 +1,9 @@
+# -*- mode: snippet -*-
+# name: essay
+# key: essay
+# --
+#+Title: title
+#+LaTeX_CLASS: essay
+#+Authors: Blue Ingram Rose
+#+LATEX_COMPILER: xelatex
+#+OPTIONS: toc:nil
