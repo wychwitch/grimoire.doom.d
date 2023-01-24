@@ -6,8 +6,8 @@
 
 ;; Some functionality uses this to identify you, e.g. GPG configuration, email
 ;; clients, file templates and snippets. It is optional.
-(setq user-full-name "wych(witch)"
-      user-mail-address "mail@wychwit.ch")
+(setq user-full-name "Blue Ingram Rose"
+      user-mail-address "blue@ingramrose.io")
 
 ;; Doom exposes five (optional) variables for controlling fonts in Doom:
 ;;
@@ -21,9 +21,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "DejaVu Sans Mono"  :size 18 )
+(setq doom-font (font-spec :family "FantasqueSansMono NF"  :size 20 )
 )
-(setq doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 18))
+(setq doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 20))
 (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono"))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -34,7 +34,7 @@
 ;; There are two ways to load a theme. Both assume the theme is installed and
 ;; available. You can either set `doom-theme' or manually load a theme with the
 ;; `load-theme' function. This is the default:
-(setq doom-theme 'doom-flatwhite)
+(setq doom-theme 'doom-homage-white)
 
 ;; This determines the style of line numbers in effect. If set to `nil', line
 ;; numbers are disabled. For relative line numbers, set this to `relative'.
@@ -82,23 +82,23 @@
 ;; use org-bullets-mode for utf8 symbols as org bullets
 (require 'org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-(setq org-superstar-headline-bullets-list '("✿" "❀" "◉" "○" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
+(setq org-superstar-headline-bullets-list '("✿" "❀" "❁" "✲" "✱" "✻" "✽" "✼" "✾")
 )
-
+;;("✿" "❀" "◉" "○" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
 ;; org ellipsis options, other than the default Go to Node...
 ;; not supported in common font, but supported in Symbola (my fall-back font) ?, ?, ?
 (setq org-ellipsis "⬎")
+(setq org-superstar-headline-bullets-list '("◉" "○" "■" "◆" "▲" ))
 
 (after! org
   (custom-set-faces!
-    '(org-document-title :height 2.3)
-    '(org-level-1 :inherit outline-0 :weight extra-bold :height 2)
-    '(org-level-1 :inherit outline-1 :weight extra-bold :height 2)
+    '(org-document-title :height 2.0)
+    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 2.0)
     '(org-level-2 :inherit outline-2 :weight bold :height 1.7)
-    '(org-level-3 :inherit outline-3 :weight bold :height 1.6)
-    '(org-level-4 :inherit outline-4 :weight bold :height 1.5)
-    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.4)
-    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.3)
+    '(org-level-3 :inherit outline-3 :weight bold :height 1.5)
+    '(org-level-4 :inherit outline-4 :weight bold :height 1.3)
+    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.1)
+    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.1)
     '(org-level-7 :inherit outline-7 :weight semi-bold)
     '(org-level-8 :inherit outline-8 :weight semi-bold)
     ;; Ensure that anything that should be fixed-pitch in org buffers appears that
@@ -114,19 +114,19 @@
 
 (defun my-weebery-is-always-greater ()
   (let* ((banner '(
-"⠀⠀⠀⣠⡶⠒⠢⠀⠀⠀⢀⣠⣴⣶⣾⣷⣶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣶⣶⣶⣤⣀⠀⠀⠀⠠⠖⢲⣦⡀⠀"
-"⠀⠀⢸⣿⣧⡀⢀⣀⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣄⣀⠀⣠⣿⡿⠀"
-"⠀⠀⢀⠙⢿⣿⣿⣿⣿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠟⠛⠛⠛⠻⢿⣿⣿⣿⣿⠿⢣⠀"
-"⠀⠀⠈⢷⣤⣀⣉⣀⣠⣤⣶⣶⣶⣶⣦⡈⢻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⠏⣠⣶⣶⣶⣶⣦⣤⣀⣈⣉⣠⣶⠇⠀"
-"⠀⠀⠀⠀⠉⠛⠛⠛⠋⠉⠉⠉⠻⣿⣿⣷⠈⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⢠⣿⣿⡿⠋⠉⠉⠉⠛⠛⠛⠋⠁⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⣠⣴⣶⣦⣄⠀⢸⣿⣿⡀⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⡇⢸⣿⣿⠁⢀⣠⣶⣶⣤⡀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⢸⣿⠋⠉⠻⣿⣧⠈⢿⣿⣷⠘⢿⣿⣿⣿⣿⣦⡀⠀⣠⣾⣿⣿⣿⣿⠟⢠⣿⣿⡇⢀⣾⡿⠋⠉⢻⣿⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠘⢿⣦⣤⠇⠸⣿⣆⠈⠻⣿⣷⣄⡙⠿⣿⣿⣿⣿⢸⣿⣿⣿⡿⠟⢁⣴⣿⡿⠋⢀⣾⡿⠁⢢⣤⣾⠟⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣷⣤⣈⡙⠛⠛⠒⠀⠙⣻⣿⢸⣿⡛⠁⠐⠚⠛⢛⣉⣠⣴⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⢿⣿⣿⣿⢿⣯⣾⡿⠛⠘⠻⢿⣾⣟⢿⣿⣿⣿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠟⠋⠁⠀⠀⠀⠀⠀⠉⠛⠷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⠁⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠈⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"                       EMACS OF HOPE                          "
+"⠀⠀⣠⡶⠒⠢⠀⠀⠀⢀⣠⣴⣶⣾⣷⣶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣶⣶⣶⣤⣀⠀⠀⠀⠠⠖⢲⣦⡀⠀"
+"⠀⢸⣿⣧⡀⢀⣀⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣄⣀⠀⣠⣿⡿⠀"
+"⠀⢀⠙⢿⣿⣿⣿⣿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠟⠛⠛⠛⠻⢿⣿⣿⣿⣿⠿⢣⠀"
+"⠀⠈⢷⣤⣀⣉⣀⣠⣤⣶⣶⣶⣶⣦⡈⢻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⠏⣠⣶⣶⣶⣶⣦⣤⣀⣈⣉⣠⣶⠇⠀"
+"⠀⠀⠀⠉⠛⠛⠛⠋⠉⠉⠉⠻⣿⣿⣷⠈⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⢠⣿⣿⡿⠋⠉⠉⠉⠛⠛⠛⠋⠁⠀⠀"
+"⠀⠀⠀⠀⠀⠀⣠⣴⣶⣦⣄⠀⢸⣿⣿⡀⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⡇⢸⣿⣿⠁⢀⣠⣶⣶⣤⡀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⢸⣿⠋⠉⠻⣿⣧⠈⢿⣿⣷⠘⢿⣿⣿⣿⣿⣦⡀⠀⣠⣾⣿⣿⣿⣿⠟⢠⣿⣿⡇⢀⣾⡿⠋⠉⢻⣿⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠘⢿⣦⣤⠇⠸⣿⣆⠈⠻⣿⣷⣄⡙⠿⣿⣿⣿⣿⢸⣿⣿⣿⡿⠟⢁⣴⣿⡿⠋⢀⣾⡿⠁⢢⣤⣾⠟⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣷⣤⣈⡙⠛⠛⠒⠀⠙⣻⣿⢸⣿⡛⠁⠐⠚⠛⢛⣉⣠⣴⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⢿⣿⣿⣿⢿⣯⣾⡿⠛⠘⠻⢿⣾⣟⢿⣿⣿⣿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠟⠋⠁⠀⠀⠀⠀⠀⠉⠛⠷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⠁⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠈⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀EMACS OF HOPE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
                    ))
          (longest-line (apply #'max (mapcar #'length banner))))
     (put-text-property
