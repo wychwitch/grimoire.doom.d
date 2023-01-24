@@ -88,7 +88,7 @@
 ;; org ellipsis options, other than the default Go to Node...
 ;; not supported in common font, but supported in Symbola (my fall-back font) ?, ?, ?
 (setq org-ellipsis "⬎")
-(setq org-superstar-headline-bullets-list '("◉" "○" "■" "◆" "▲" ))
+(setq org-superstar-item-bullet-alist'("◉" "○" "■" "◆" "▲" ))
 
 (after! org
   (custom-set-faces!
@@ -114,19 +114,17 @@
 
 (defun my-weebery-is-always-greater ()
   (let* ((banner '(
-"⠀⠀⣠⡶⠒⠢⠀⠀⠀⢀⣠⣴⣶⣾⣷⣶⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣤⣶⣶⣶⣶⣶⣤⣀⠀⠀⠀⠠⠖⢲⣦⡀⠀"
-"⠀⢸⣿⣧⡀⢀⣀⣤⣴⣿⣿⣿⣿⣿⣿⣿⣿⣿⣦⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⣿⣿⣿⣿⣷⣤⣄⣀⠀⣠⣿⡿⠀"
-"⠀⢀⠙⢿⣿⣿⣿⣿⠿⠛⠛⠛⠛⠿⣿⣿⣿⣿⣿⡇⠀⠀⠀⠀⠀⠀⠀⠀⢀⣾⣿⣿⣿⣿⡿⠟⠛⠛⠛⠻⢿⣿⣿⣿⣿⠿⢣⠀"
-"⠀⠈⢷⣤⣀⣉⣀⣠⣤⣶⣶⣶⣶⣦⡈⢻⣿⣿⣿⣿⠀⠀⠀⠀⠀⠀⠀⠀⢸⣿⣿⣿⣿⠏⣠⣶⣶⣶⣶⣦⣤⣀⣈⣉⣠⣶⠇⠀"
-"⠀⠀⠀⠉⠛⠛⠛⠋⠉⠉⠉⠻⣿⣿⣷⠈⣿⣿⣿⣿⡆⠀⠀⠀⠀⠀⠀⠀⣸⣿⣿⣿⣿⢠⣿⣿⡿⠋⠉⠉⠉⠛⠛⠛⠋⠁⠀⠀"
-"⠀⠀⠀⠀⠀⠀⣠⣴⣶⣦⣄⠀⢸⣿⣿⡀⣿⣿⣿⣿⣿⡄⠀⠀⠀⠀⠀⣴⣿⣿⣿⣿⡇⢸⣿⣿⠁⢀⣠⣶⣶⣤⡀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⢸⣿⠋⠉⠻⣿⣧⠈⢿⣿⣷⠘⢿⣿⣿⣿⣿⣦⡀⠀⣠⣾⣿⣿⣿⣿⠟⢠⣿⣿⡇⢀⣾⡿⠋⠉⢻⣿⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠘⢿⣦⣤⠇⠸⣿⣆⠈⠻⣿⣷⣄⡙⠿⣿⣿⣿⣿⢸⣿⣿⣿⡿⠟⢁⣴⣿⡿⠋⢀⣾⡿⠁⢢⣤⣾⠟⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠻⣿⣷⣤⣈⡙⠛⠛⠒⠀⠙⣻⣿⢸⣿⡛⠁⠐⠚⠛⢛⣉⣠⣴⣿⡿⠃⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠛⠿⢿⣿⣿⣿⢿⣯⣾⡿⠛⠘⠻⢿⣾⣟⢿⣿⣿⣿⠿⠟⠋⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⡴⠟⠋⠁⠀⠀⠀⠀⠀⠉⠛⠷⣤⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠊⠁⠀⠀⠀⠀⠀⠀ ⠀⠀⠀⠀⠀⠀⠈⠉⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
-"⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀EMACS OF HOPE⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀"
+"⢠⣶⠒⠄⡀⡀⣠⣶⣾⣿⣶⡄⡀⡀⡀⡀⡀⡀⡀⡀⡀⣴⣾⣿⣶⣦⡀⡀⡀⠖⢲⣤"
+"⢸⣿⣀⣤⣶⣿⣿⣿⣿⣿⣿⣿⡄⡀⡀⡀⡀⡀⡀⡀⣿⣿⣿⣿⣿⣿⣿⣷⣤⣀⣼⣿"
+"⢣⠙⠿⠿⠛⠉⣀⣀⠉⢿⣿⣿⣿⡀⡀⡀⡀⡀⡀⣼⣿⣿⣿⠋⣁⣀⠈⠙⠻⠿⠛⣠"
+"⡀⠻⣿⣶⠿⠟⠿⣿⣿⡄⣿⣿⣿⡄⡀⡀⡀⡀⡀⣿⣿⣿⠁⣿⣿⠿⠛⠿⣷⣾⠿⠁"
+"⡀⡀⡀⢀⣠⣤⡀⠈⣿⣿⢿⣿⣿⣷⡀⡀⡀⡀⣰⣿⣿⣿⢸⣿⡏⡀⣠⣤⣀⡀⡀⡀"
+"⡀⡀⡀⣿⠋⡙⣿⡄⢿⣿⡈⣿⣿⣿⣷⡀⡀⣴⣿⣿⣿⠋⣾⣿⡀⣿⠟⡉⢿⡆⡀⡀"
+"⡀⡀⡀⠻⣶⠞⠘⣿⡀⠻⣿⣄⠙⢿⣿⣿⢸⣿⣿⠟⣁⣾⡿⠁⣼⡟⠘⣴⡿⠁⡀⡀"
+"⡀⡀⡀⡀⡀⡀⡀⠻⣿⣶⣤⣉⣉⣉⣠⣿⢸⣧⢈⣉⣉⣠⣴⣿⡿⡀⡀⡀⡀⡀⡀⡀"
+"⡀⡀⡀⡀⡀⡀⡀⡀⡀⠉⠛⠛⣫⡾⠛⠁⡀⠙⠿⣮⠛⠛⠋⡀⡀⡀⡀⡀⡀⡀⡀⡀"
+"⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡠⠛⡀⡀⡀⡀⡀⡀⡀⡀⠙⠦⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀"
+"⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀EMACS OF HOPE⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀⡀"
                    ))
          (longest-line (apply #'max (mapcar #'length banner))))
     (put-text-property
@@ -139,3 +137,28 @@
      'face 'doom-dashboard-banner)))
 
 (setq +doom-dashboard-ascii-banner-fn #'my-weebery-is-always-greater)
+(require 'ox-latex)
+(unless (boundp 'org-latex-classes)
+  (setq org-latex-classes nil))
+(add-to-list 'org-latex-classes
+             '("essay"
+               "\\documentclass{essay}"
+               ("\\section{%s}" . "\\section*{%s}")))
+(add-to-list 'org-latex-classes
+             '("rose_essay"
+               "\\documentclass{essay[rose]}"
+               ("\\section{%s}" . "\\section*{%s}")))
+(add-to-list 'org-latex-classes
+             '("blue_essay"
+               "\\documentclass{essay[blue]}"
+               ("\\section{%s}" . "\\section*{%s}")))
+(add-to-list 'org-latex-classes
+             '("purp_essay"
+               "\\documentclass{essay[purp]}"
+               ("\\section{%s}" . "\\section*{%s}")))
+(setq TeX-engine 'xetex)
+
+(setq org-journal-file-type 'monthly)
+(setq yas-snippet-dirs
+      '("~/.doom.d/snippets"                 ;; personal snippets
+        ))
