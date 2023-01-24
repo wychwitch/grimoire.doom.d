@@ -145,16 +145,16 @@
                "\\documentclass{essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
-             '("rose_essay"
-               "\\documentclass{essay[rose]}"
+             '("rose-essay"
+               "\\documentclass[rose]{essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
-             '("blue_essay"
-               "\\documentclass{essay[blue]}"
+             '("blue-essay"
+               "\\documentclass[blue]{essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
              '("purp_essay"
-               "\\documentclass{essay[purp]}"
+               "\\documentclass[purp]{essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (setq TeX-engine 'xetex)
 
