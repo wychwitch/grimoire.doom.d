@@ -162,3 +162,4 @@
 (setq yas-snippet-dirs
       '("~/.doom.d/snippets"                 ;; personal snippets
         ))
+(ispell-change-dictionary "english" t)
