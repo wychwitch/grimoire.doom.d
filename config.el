@@ -166,18 +166,18 @@
 
 
 
-(make-face 'font-lock-special-macro-face)
-(set-face-foreground 'font-lock-special-macro-face "purple")
+;;(make-face 'font-lock-special-macro-face)
+;;(set-face-foreground 'font-lock-special-macro-face "purple")
 
-(defun add-custom-keyw()
-  "adds a few special keywords for c and c++ modes"
+;;(defun add-custom-keyw()
+;;  "adds a few special keywords for c and c++ modes"
   ;
-  (font-lock-add-keywords nil
-   '(
-     ("\\<\\(M::.*\\)" . 'font-lock-special-macro-face )
+;;  (font-lock-add-keywords nil
+;;   '(
+;;     ("\\<\\(M::.*\\)" . 'font-lock-special-macro-face )
 
      ; more of those would go here
-     )
-   )
- )
-(add-hook 'org-mode-hook' 'add-custom-keyw)
+;;     )
+;;   )
+;; )
+;;(add-hook 'org-mode-hook' 'add-custom-keyw)
