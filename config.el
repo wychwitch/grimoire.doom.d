@@ -163,3 +163,21 @@
       '("~/.doom.d/snippets"                 ;; personal snippets
         ))
 (ispell-change-dictionary "english" t)
+
+
+
+(make-face 'font-lock-special-macro-face)
+(set-face-foreground 'font-lock-special-macro-face "purple")
+
+(defun add-custom-keyw()
+  "adds a few special keywords for c and c++ modes"
+  ;
+  (font-lock-add-keywords nil
+   '(
+     ("\\<\\(M::.*\\)" . 'font-lock-special-macro-face )
+
+     ; more of those would go here
+     )
+   )
+ )
+(add-hook 'org-mode-hook' 'add-custom-keyw)
