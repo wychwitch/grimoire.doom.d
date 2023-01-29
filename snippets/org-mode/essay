@@ -2,11 +2,9 @@
 # name: essay
 # key: essay
 # --
-#+Title: a small test
-#+LaTeX_CLASS: blue-essay
+#+Title: example, delete me
+#+LaTeX_CLASS: mla9
 #+Authors: Blue Ingram Rose
+#+Professor: ?????
 #+LATEX_COMPILER: xelatex
 #+OPTIONS: toc:nil
-\pagenumbering{gobble}
-* section title
-\pagenumbering{arabic}

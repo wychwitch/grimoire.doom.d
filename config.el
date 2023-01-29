@@ -93,13 +93,13 @@
 (after! org
   (custom-set-faces!
     '(org-document-title :height 2.0)
-    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 2.0)
-    '(org-level-2 :inherit outline-2 :weight bold :height 1.7)
-    '(org-level-3 :inherit outline-3 :weight bold :height 1.5)
-    '(org-level-4 :inherit outline-4 :weight bold :height 1.3)
-    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.1)
-    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.1)
-    '(org-level-7 :inherit outline-7 :weight semi-bold)
+    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 2.0 :foreground "#6B5787")
+    '(org-level-2 :inherit outline-2 :weight bold :height 1.7 :foreground "#8E79AB")
+    '(org-level-3 :inherit outline-3 :weight bold :height 1.5 :foreground "#B0A8B9")
+    '(org-level-4 :inherit outline-4 :weight bold :height 1.3 :foreground "#D99585")
+    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.1 :foreground "#A06254")
+    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.1 :foreground "#5FB4A4")
+    '(org-level-7 :inherit outline-7 :weight semi-bold :foreground "#BF9D7A")
     '(org-level-8 :inherit outline-8 :weight semi-bold)
     ;; Ensure that anything that should be fixed-pitch in org buffers appears that
     ;; way
@@ -141,21 +141,26 @@
 (unless (boundp 'org-latex-classes)
   (setq org-latex-classes nil))
 (add-to-list 'org-latex-classes
-             '("essay"
-               "\\documentclass{essay}"
+             '("pretty-essay"
+               "\\documentclass{pretty-essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
-             '("rose-essay"
-               "\\documentclass[rose]{essay}"
+             '("pretty-rose-essay"
+               "\\documentclass[rose]{pretty-essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
-             '("blue-essay"
-               "\\documentclass[blue]{essay}"
+             '("pretty-blue-essay"
+               "\\documentclass[blue]{pretty-essay}"
                ("\\section{%s}" . "\\section*{%s}")))
 (add-to-list 'org-latex-classes
-             '("purp_essay"
-               "\\documentclass[purp]{essay}"
+             '("pretty-purp-essay"
+               "\\documentclass[purp]{pretty-essay}"
                ("\\section{%s}" . "\\section*{%s}")))
+(add-to-list 'org-latex-classes
+             '("mla9"
+               "\\documentclass[mla8]{mla-custom}"
+               ("\\section{%s}" . "\\section*{%s}")))
+
 (setq TeX-engine 'xetex)
 
 (setq org-journal-file-type 'monthly)
@@ -170,7 +175,7 @@
 ;;(set-face-foreground 'font-lock-special-macro-face "purple")
 
 ;;(defun add-custom-keyw()
-;;  "adds a few special keywords for c and c++ modes"
+;;  "adds a few special keywords for c and c++ m:odes"
   ;
 ;;  (font-lock-add-keywords nil
 ;;   '(
@@ -181,3 +186,20 @@
 ;;   )
 ;; )
 ;;(add-hook 'org-mode-hook' 'add-custom-keyw)
+;;(use-package! ox-extra
+;;  :after org
+;;  :config
+;;  (ox-extras-activate '(ignore-headlines))
+;;  )
+
+(require 'ox-extra)
+
+(ox-extras-activate '(ignore-headlines))
+
+(setq bibtex-completion-bibliography '("C:\\Git\\_writings\\essays\\ENGL 112 Fall 2023.bib"))
+
+(add-to-list 'exec-path "C:\\msys64\\usr\\share\\bash-completion\\completions")
+(setq ispell-program-name "aspell")
+    (setq ispell-personal-dictionary "C:/Users/lumin/.doom.d/.ispell")
+(require 'ispell)
+
