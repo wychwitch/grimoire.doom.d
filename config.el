@@ -208,3 +208,18 @@
        :desc "Export to pdf (through latex)" "p" #'org-latex-export-to-pdf
        :desc "Export to latex" "l" #'org-latex-export-to-latex
        ))
+
+(defface mymode-w '((t :foreground "#9a6cb2" )) "" )
+(defface mymode-c '((t :foreground "#ec51cd" )) "" )
+(defface mymode-m '((t :foreground "#5459b6" )) "" )
+(defface mymode-n '((t :foreground "#1c1b1d" )) "" )
+
+(setq mymode-highlights '(
+    ("w:: .*$" . 'mymode-w)
+    ("c:: .*$" . 'mymode-c)
+    ("m:: .*$" . 'mymode-m)
+    ("n:: .*$" . 'mymode-n)
+    ))
+
+(define-derived-mode mymode-mode text-mode "mymode" "major mode mymode."
+    (setq font-lock-defaults '(mymode-highlights)))
