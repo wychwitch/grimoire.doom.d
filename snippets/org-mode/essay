@@ -2,9 +2,15 @@
 # name: essay
 # key: essay
 # --
-#+Title: example, delete me
+##+Title: example, delete me
 #+LaTeX_CLASS: mla9
-#+Authors: Blue Ingram Rose
-#+Professor: ?????
+#+AUTHOR: Blue Ingram Rose
+#+DATE: \mladate
 #+LATEX_COMPILER: xelatex
 #+OPTIONS: toc:nil
+#+LaTeX_HEADER:\professor{Michael Carriger}\course{ENGL 122}
+#+BIBLIOGRAPHY:ENGL 112 Fall 2023.bib
+
+
+* biography :ignore:
+#+PRINT_BIBLIOGRAPHY:

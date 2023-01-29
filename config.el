@@ -203,3 +203,8 @@
     (setq ispell-personal-dictionary "C:/Users/lumin/.doom.d/.ispell")
 (require 'ispell)
 
+(map! :leader
+      (:prefix-map ("e" . "export")
+       :desc "Export to pdf (through latex)" "p" #'org-latex-export-to-pdf
+       :desc "Export to latex" "l" #'org-latex-export-to-latex
+       ))
