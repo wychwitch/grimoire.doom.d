@@ -109,7 +109,27 @@
     '(org-verbatim nil :inherit '(shadow fixed-pitch))
     '(org-special-keyword nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
-    '(org-checkbox nil :inherit 'fixed-pitch)))
+    '(org-checkbox nil :inherit 'fixed-pitch))
+
+(defface mymode-w '((t :foreground "#9a6cb2" :inherit text)) "" )
+(defface mymode-c '((t :foreground "#ec51cd" :inherit text)) "" )
+(defface mymode-m '((t :foreground "#5459b6" :inherit text)) "" )
+(defface mymode-n '((t :foreground "#1c1b1d" :inherit text )) "" )
+
+(setq mymode-highlights '(
+    ("w:: .*$" . 'mymode-w)
+    ("c:: .*$" . 'mymode-c)
+    ("m:: .*$" . 'mymode-m)
+    ("n:: .*$" . 'mymode-n)
+    ))
+
+
+(setq font-lock-defaults '(mymode-highlights))
+(add-hook 'org-mode '(mymode-highlights))
+
+(add-hook 'org-mode-hook '(lambda ()
+    (highlight-regexp  '(mymode-highlights) font-lock-constant-face)))
+  )
 
 
 (defun my-weebery-is-always-greater ()
@@ -209,17 +229,3 @@
        :desc "Export to latex" "l" #'org-latex-export-to-latex
        ))
 
-(defface mymode-w '((t :foreground "#9a6cb2" )) "" )
-(defface mymode-c '((t :foreground "#ec51cd" )) "" )
-(defface mymode-m '((t :foreground "#5459b6" )) "" )
-(defface mymode-n '((t :foreground "#1c1b1d" )) "" )
-
-(setq mymode-highlights '(
-    ("w:: .*$" . 'mymode-w)
-    ("c:: .*$" . 'mymode-c)
-    ("m:: .*$" . 'mymode-m)
-    ("n:: .*$" . 'mymode-n)
-    ))
-
-(define-derived-mode mymode-mode text-mode "mymode" "major mode mymode."
-    (setq font-lock-defaults '(mymode-highlights)))
