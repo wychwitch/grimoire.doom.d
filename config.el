@@ -111,25 +111,38 @@
     '(org-meta-line nil :inherit '(font-lock-comment-face fixed-pitch))
     '(org-checkbox nil :inherit 'fixed-pitch))
 
-(defface mymode-w '((t :foreground "#9a6cb2" :inherit text)) "" )
-(defface mymode-c '((t :foreground "#ec51cd" :inherit text)) "" )
-(defface mymode-m '((t :foreground "#5459b6" :inherit text)) "" )
-(defface mymode-n '((t :foreground "#1c1b1d" :inherit text )) "" )
 
-(setq mymode-highlights '(
-    ("w:: .*$" . 'mymode-w)
-    ("c:: .*$" . 'mymode-c)
-    ("m:: .*$" . 'mymode-m)
-    ("n:: .*$" . 'mymode-n)
-    ))
+  (defface w-text '((t ( :foreground "#D1A0EA" :inherit text :weight extra-bold) )) "Witch's Text" :group 'org-mode)
+  (defvar w-text 'w-text)
+
+  (defface c-text '((t (:foreground "#ec51cd" :inherit text :weight extra-bold) )) "Celeste's Text" :group 'org-mode )
+  (defvar c-text 'c-text)
+
+  (defface m-text '((t (:foreground "#5459b6" :inherit text :weight extra-bold) )) "Magician's Text" :group 'org-mode )
+  (defvar m-text 'm-text)
+
+  (defface n-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Nyx's Text" :group 'org-mode )
+  (defvar n-text 'n-text)
+  ;;; Add keywords
+  (defun add-alter-keywords()
+    "adds custom keywords for highlighting text in org-mode."
+    (font-lock-add-keywords nil
+          '(("w: .*$" . 'w-text))
+          )
+     (font-lock-add-keywords nil
+          '(("m: .*$" . 'm-text))
+          )
+     (font-lock-add-keywords nil
+          '(("c: .*$" . 'c-text))
+          )
+     (font-lock-add-keywords nil
+          '(("n: .*$" . 'n-text))
+          )
+     )
+  (add-hook 'org-mode-hook 'add-alter-keywords)
 
 
-(setq font-lock-defaults '(mymode-highlights))
-(add-hook 'org-mode '(mymode-highlights))
-
-(add-hook 'org-mode-hook '(lambda ()
-    (highlight-regexp  '(mymode-highlights) font-lock-constant-face)))
-  )
+)
 
 
 (defun my-weebery-is-always-greater ()
