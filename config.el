@@ -193,6 +193,11 @@
              '("mla9"
                "\\documentclass[mla8]{mla-custom}"
                ("\\section{%s}" . "\\section*{%s}")))
+(add-to-list 'org-latex-classes
+             '("constitution"
+               "\\documentclass{constitution}"
+               ("\\section{%s}" . "\\article*{%s}")
+               ("\\subsection{%s}" . "\\section*{%s}")))
 
 (setq TeX-engine 'xetex)
 
@@ -203,27 +208,6 @@
 (ispell-change-dictionary "english" t)
 
 
-
-;;(make-face 'font-lock-special-macro-face)
-;;(set-face-foreground 'font-lock-special-macro-face "purple")
-
-;;(defun add-custom-keyw()
-;;  "adds a few special keywords for c and c++ m:odes"
-  ;
-;;  (font-lock-add-keywords nil
-;;   '(
-;;     ("\\<\\(M::.*\\)" . 'font-lock-special-macro-face )
-
-     ; more of those would go here
-;;     )
-;;   )
-;; )
-;;(add-hook 'org-mode-hook' 'add-custom-keyw)
-;;(use-package! ox-extra
-;;  :after org
-;;  :config
-;;  (ox-extras-activate '(ignore-headlines))
-;;  )
 
 (require 'ox-extra)
 
