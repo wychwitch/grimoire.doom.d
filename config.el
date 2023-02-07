@@ -225,4 +225,12 @@
        :desc "Export to pdf (through latex)" "p" #'org-latex-export-to-pdf
        :desc "Export to latex" "l" #'org-latex-export-to-latex
        ))
-
+(use-package org-rainbow-tags
+  :ensure t
+  :custom
+  (org-rainbow-tags-hash-start-index 10)
+  (org-rainbow-tags-extra-face-attributes
+   ;; Default is '(:weight 'bold)
+   '(:inverse-video t :box t :weight 'bold))
+  :hook
+  (org-mode . org-rainbow-tags-mode))
