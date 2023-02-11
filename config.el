@@ -225,6 +225,9 @@
        :desc "Export to pdf (through latex)" "p" #'org-latex-export-to-pdf
        :desc "Export to latex" "l" #'org-latex-export-to-latex
        ))
+
+;(unless (package-installed-p 'org-rainbow-tags)
+ ; (package-install 'org-rainbow-tags))
 (use-package org-rainbow-tags
   :ensure t
   :custom
