@@ -123,11 +123,16 @@
 
   (defface n-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Nyx's Text" :group 'org-mode )
   (defvar n-text 'n-text)
+<<<<<<< HEAD
 
   (defface g-text '((t (:foreground "#76e37a" :inherit text :weight extra-bold) )) "Gidget's Text" :group 'org-mode )
   (defvar g-text 'g-text)
 
 
+=======
+  (defface g-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Gidgit's Text" :group 'org-mode )
+  (defvar g-text 'g-text)
+>>>>>>> 6c5212b31a4f49112624371891e8082d2ec3f4b5
   ;;; Add keywords
   (defun add-alter-keywords()
     "adds custom keywords for highlighting text in org-mode."
@@ -286,3 +291,6 @@
   ;; If you prefer you can use `obsidian-insert-link'
   ("C-c C-l" . obsidian-insert-wikilink)))
 
+ (setq lsp-rust-server 'rust-analyzer)
+(add-to-list 'exec-path
+             (expand-file-name "C:\\Users\\lumin\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc\\bin"))
