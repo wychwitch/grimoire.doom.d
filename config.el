@@ -123,6 +123,11 @@
 
   (defface n-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Nyx's Text" :group 'org-mode )
   (defvar n-text 'n-text)
+
+  (defface g-text '((t (:foreground "#76e37a" :inherit text :weight extra-bold) )) "Gidget's Text" :group 'org-mode )
+  (defvar g-text 'g-text)
+
+
   ;;; Add keywords
   (defun add-alter-keywords()
     "adds custom keywords for highlighting text in org-mode."
@@ -138,11 +143,28 @@
      (font-lock-add-keywords nil
           '(("n: .*$" . 'n-text))
           )
+(font-lock-add-keywords nil
+          '(("g: .*$" . 'g-text))
+          )
      )
   (add-hook 'org-mode-hook 'add-alter-keywords)
 
 
+(defun display-persona-names()
+(use-package ov
+  :ensure t)
+ (ov-set (ov-regexp "^m:") 'display "<magician>")
+ (ov-set (ov-regexp "^w:") 'display "<witch>")
+ (ov-set (ov-regexp "^c:") 'display "<celeste>")
+ (ov-set (ov-regexp "^n:") 'display "<nyx>")
+ (ov-set (ov-regexp "^g:") 'display "<gidget>")
+
+  )
+(add-hook 'org-mode-hook 'display-persona-names)
+(add-hook 'after-save-hook 'display-persona-names)
+
 )
+
 
 
 (defun my-weebery-is-always-greater ()
@@ -207,7 +229,7 @@
         ))
 (ispell-change-dictionary "english" t)
 
-
+(setq org-hide-leading-stars t)
 
 (require 'ox-extra)
 
@@ -225,9 +247,17 @@
        :desc "Export to pdf (through latex)" "p" #'org-latex-export-to-pdf
        :desc "Export to latex" "l" #'org-latex-export-to-latex
        ))
-
-;(unless (package-installed-p 'org-rainbow-tags)
- ; (package-install 'org-rainbow-tags))
+(map! :leader
+      (:prefix-map ("o" . "open")
+       (:prefix-map ("o" . "obsidian")
+      :desc "jump to file" "j" #'obsidian-jump
+       )
+       )
+      )
+(map! :leader
+      (:prefix-map ("r" . "ring")
+       (:prefix ("p" . "paste")
+        :desc "consult-yank-pop" "p" #'counsel-yank-pop)))
 (use-package org-rainbow-tags
   :ensure t
   :custom
@@ -237,3 +267,22 @@
    '(:inverse-video t :box t :weight 'bold))
   :hook
   (org-mode . org-rainbow-tags-mode))
+
+
+(use-package obsidian
+  :ensure t
+  :demand t
+  :config
+  (obsidian-specify-path "~/obsidian")
+  (global-obsidian-mode t)
+  :custom
+  ;; This directory will be used for `obsidian-capture' if set.
+  (obsidian-inbox-directory "_inbox")
+  :bind (:map obsidian-mode-map
+  ;; Replace C-c C-o with Obsidian.el's implementation. It's ok to use another key binding.
+  ("C-c C-o" . obsidian-follow-link-at-point)
+  ;; Jump to backlinks
+  ("C-c C-b" . obsidian-backlink-jump)
+  ;; If you prefer you can use `obsidian-insert-link'
+  ("C-c C-l" . obsidian-insert-wikilink)))
+

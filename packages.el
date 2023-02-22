@@ -9,6 +9,12 @@
 ;; To install SOME-PACKAGE from MELPA, ELPA or emacsmirror:
 ;(package! some-package)
 (package! org-superstar)
+
+(package! org-rainbow-tags )
+(package! org-super-agenda)
+
+(package! obsidian)
+(package! ov)
 ;(package! org-plus-contrib)
 ;; To install a package directly from a remote git repo, you must specify a
 ;; `:recipe'. You'll find documentation on what `:recipe' accepts here:
