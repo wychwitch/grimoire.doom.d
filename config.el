@@ -123,6 +123,8 @@
 
   (defface n-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Nyx's Text" :group 'org-mode )
   (defvar n-text 'n-text)
+  (defface g-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Gidgit's Text" :group 'org-mode )
+  (defvar g-text 'g-text)
   ;;; Add keywords
   (defun add-alter-keywords()
     "adds custom keywords for highlighting text in org-mode."
@@ -237,3 +239,6 @@
    '(:inverse-video t :box t :weight 'bold))
   :hook
   (org-mode . org-rainbow-tags-mode))
+ (setq lsp-rust-server 'rust-analyzer)
+(add-to-list 'exec-path
+             (expand-file-name "C:\\Users\\lumin\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc\\bin"))
