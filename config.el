@@ -21,9 +21,9 @@
 ;; See 'C-h v doom-font' for documentation and more examples of what they
 ;; accept. For example:
 ;;
-(setq doom-font (font-spec :family "FantasqueSansMono NF"  :size 20 )
+(setq doom-font (font-spec :family "FantasqueSansMono NF"  :size 30 )
 )
-(setq doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 20))
+(setq doom-variable-pitch-font (font-spec :family "FantasqueSansMono NF" :size 30))
 (setq doom-unicode-font (font-spec :family "DejaVu Sans Mono"))
 ;;
 ;; If you or Emacs can't find your font, use 'M-x describe-font' to look them
@@ -92,15 +92,16 @@
 
 (after! org
   (custom-set-faces!
-    '(org-document-title :height 2.0)
-    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 2.0 :foreground "#6B5787")
-    '(org-level-2 :inherit outline-2 :weight bold :height 1.7 :foreground "#8E79AB")
-    '(org-level-3 :inherit outline-3 :weight bold :height 1.5 :foreground "#B0A8B9")
-    '(org-level-4 :inherit outline-4 :weight bold :height 1.3 :foreground "#D99585")
-    '(org-level-5 :inherit outline-5 :weight semi-bold :height 1.1 :foreground "#A06254")
-    '(org-level-6 :inherit outline-6 :weight semi-bold :height 1.1 :foreground "#5FB4A4")
-    '(org-level-7 :inherit outline-7 :weight semi-bold :foreground "#BF9D7A")
-    '(org-level-8 :inherit outline-8 :weight semi-bold)
+    '(org-document-title :height 1.4)
+    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 1.4 :foreground "#6190FF")
+    '(org-level-2 :inherit outline-2 :weight bold :height 1.4 :foreground "#7040AA")
+    '(org-level-3 :inherit outline-3 :weight bold :height 1.4 :foreground "#D581CF")
+    '(org-level-4 :inherit outline-4 :weight bold :height 1.4 :foreground "#5BA98C")
+    '(org-level-5 :inherit outline-5 :weight bold :height 1.4 :foreground "#324B81")
+    '(org-level-6 :inherit outline-6 :weight bold :height 1.4 :foreground "#A45673")
+    '(org-level-7 :inherit outline-7 :weight bold :height 1.4 :foreground "#4C4C4C")
+    '(org-level-8 :inherit outline-8 :weight bold :height 1.4 :foreground "#7040AA")
+    '(org-level-9 :inherit outline-8 :weight bold :height 1.4 :foreground "#7040AA")
     ;; Ensure that anything that should be fixed-pitch in org buffers appears that
     ;; way
     '(org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -291,3 +292,4 @@
  (setq lsp-rust-server 'rust-analyzer)
 (add-to-list 'exec-path
              (expand-file-name "C:\\Users\\lumin\\.rustup\\toolchains\\stable-x86_64-pc-windows-msvc\\bin"))
+(setq calendar-week-start-day 1)
