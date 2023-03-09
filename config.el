@@ -82,7 +82,7 @@
 ;; use org-bullets-mode for utf8 symbols as org bullets
 (require 'org-superstar)
 (add-hook 'org-mode-hook (lambda () (org-superstar-mode 1)))
-(setq org-superstar-headline-bullets-list '("✿" "❀" "❁" "✲" "✱" "✻" "✽" "✼" "✾")
+(setq org-superstar-headline-bullets-list '("✿" "❀" "❁" "✻" "✽" "✼" "✾" "✲" "✱")
 )
 ;;("✿" "❀" "◉" "○" "❁" "✽" "✲" "✱" "✻" "✼" "✽" "✾")
 ;; org ellipsis options, other than the default Go to Node...
@@ -93,15 +93,15 @@
 (after! org
   (custom-set-faces!
     '(org-document-title :height 1.4)
-    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 1.4 :foreground "#6190FF")
-    '(org-level-2 :inherit outline-2 :weight bold :height 1.4 :foreground "#7040AA")
-    '(org-level-3 :inherit outline-3 :weight bold :height 1.4 :foreground "#D581CF")
-    '(org-level-4 :inherit outline-4 :weight bold :height 1.4 :foreground "#5BA98C")
-    '(org-level-5 :inherit outline-5 :weight bold :height 1.4 :foreground "#324B81")
-    '(org-level-6 :inherit outline-6 :weight bold :height 1.4 :foreground "#A45673")
-    '(org-level-7 :inherit outline-7 :weight bold :height 1.4 :foreground "#4C4C4C")
-    '(org-level-8 :inherit outline-8 :weight bold :height 1.4 :foreground "#7040AA")
-    '(org-level-9 :inherit outline-8 :weight bold :height 1.4 :foreground "#7040AA")
+    '(org-level-1 :inherit  outline-1 :weight extra-bold :height 1.2 :foreground "#6190FF")
+    '(org-level-2 :inherit outline-2 :height 1.2 :foreground "#7040AA")
+    '(org-level-3 :inherit outline-3 :height 1.2 :foreground "#D581CF")
+    '(org-level-4 :inherit outline-4 :height 1.2 :foreground "#5BA98C")
+    '(org-level-5 :inherit outline-5 :height 1.2 :foreground "#324B81")
+    '(org-level-6 :inherit outline-6 :height 1.2 :foreground "#A45673")
+    '(org-level-7 :inherit outline-7 :height 1.2 :foreground "#4C4C4C")
+    '(org-level-8 :inherit outline-8 :height 1.2 :foreground "#7040AA")
+    '(org-level-9 :inherit outline-8 :height 1.2 :foreground "#7040AA")
     ;; Ensure that anything that should be fixed-pitch in org buffers appears that
     ;; way
     '(org-block nil :foreground nil :inherit 'fixed-pitch)
@@ -113,19 +113,19 @@
     '(org-checkbox nil :inherit 'fixed-pitch))
 
 
-  (defface w-text '((t ( :foreground "#D1A0EA" :inherit text :weight extra-bold) )) "Witch's Text" :group 'org-mode)
+  (defface w-text '((t ( :foreground "#D1A0EA" :inherit text ) )) "Witch's Text" :group 'org-mode)
   (defvar w-text 'w-text)
 
-  (defface c-text '((t (:foreground "#ec51cd" :inherit text :weight extra-bold) )) "Celeste's Text" :group 'org-mode )
+  (defface c-text '((t (:foreground "#ec51cd" :inherit text ) )) "Celeste's Text" :group 'org-mode )
   (defvar c-text 'c-text)
 
-  (defface m-text '((t (:foreground "#5459b6" :inherit text :weight extra-bold) )) "Magician's Text" :group 'org-mode )
+  (defface m-text '((t (:foreground "#5459b6" :inherit text ) )) "Magician's Text" :group 'org-mode )
   (defvar m-text 'm-text)
 
-  (defface n-text '((t (:foreground "#6a6273" :inherit text :weight extra-bold) )) "Nyx's Text" :group 'org-mode )
+  (defface n-text '((t (:foreground "#6a6273" :inherit text ) )) "Nyx's Text" :group 'org-mode )
   (defvar n-text 'n-text)
 
-  (defface g-text '((t (:foreground "#76e37a" :inherit text :weight extra-bold) )) "Gidget's Text" :group 'org-mode )
+  (defface g-text '((t (:foreground "#76e37a" :inherit text ) )) "Gidget's Text" :group 'org-mode )
   (defvar g-text 'g-text)
 
 
