@@ -135,19 +135,19 @@
   (defun add-alter-keywords()
     "adds custom keywords for highlighting text in org-mode."
     (font-lock-add-keywords nil
-          '(("w: .*$" . 'w-text))
+          '(("^w: .*$" . 'w-text))
           )
      (font-lock-add-keywords nil
-          '(("m: .*$" . 'm-text))
+          '(("^m: .*$" . 'm-text))
           )
      (font-lock-add-keywords nil
-          '(("c: .*$" . 'c-text))
+          '(("^c: .*$" . 'c-text))
           )
      (font-lock-add-keywords nil
-          '(("n: .*$" . 'n-text))
+          '(("^n: .*$" . 'n-text))
           )
 (font-lock-add-keywords nil
-          '(("g: .*$" . 'g-text))
+          '(("^g: .*$" . 'g-text))
           )
      )
   (add-hook 'org-mode-hook 'add-alter-keywords)
